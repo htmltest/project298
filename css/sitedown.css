@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {outline:none; box-sizing:border-box}
+
+html {min-width:375px; height:100%}
+
+body {min-width:375px; height:100%; margin:0; padding:0; font:500 15px/1.5em Gilroy, sans-serif; color:rgba(0, 15, 59, 0.75); background:#FFFFFF; -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-anchor:none}
+
+a {outline:none; color:rgba(0, 15, 59, 0.75); text-decoration:none; transition:color 0.2s}
+@media (min-width:1100px) {
+    a:hover {color:#FF6734}
+}
+
+img {border:none; max-width:100%; height:auto}
+iframe {border:none; max-width:100%}
+
+::-ms-clear {display:none}
+
+.container {margin:0 auto; max-width:1200px; width:100%}
+
+.sitedown {display:flex; flex-direction:column; padding:60px 0 77px 0; gap:100px 0}
+
+.sitedown-logo img {display:block; width:392px}
+
+.sitedown-header {display:flex; justify-content:space-between; gap:0 40px}
+.sitedown-header-text {min-width:calc(50% - 20px); max-width:calc(50% - 20px); display:flex; flex-direction:column; justify-content:space-between; gap:30px 0}
+.sitedown-header-title {font-weight:600; font-size:48px; line-height:1.2em; color:#272750}
+.sitedown-header-hotline {display:flex; align-items:center; justify-content:space-between; min-width:calc(50% - 20px); max-width:calc(50% - 20px); padding:20px; border-radius:12px; background:#F8F8FC}
+.sitedown-header-hotline-img {min-width:172px; max-width:172px}
+.sitedown-header-hotline-img img {display:block; width:100%}
+.sitedown-header-hotline-text {display:flex; flex-direction:column; gap:20px 0}
+.sitedown-header-hotline-title {font-weight:600; font-size:11px; line-height:1.4em; letter-spacing:0.09em; color:#8D8DA6; text-transform:uppercase}
+.sitedown-header-hotline-phone {display:flex; flex-direction:column}
+.sitedown-header-hotline-phone-value {font-weight:600; font-size:30px; line-height:1.2em; color:#000F3B}
+.sitedown-header-hotline-phone-value a {color:#000F3B}
+@media (min-width:1100px) {
+    .sitedown-header-hotline-phone-value a:hover {color:#FF6734}
+}
+.sitedown-header-hotline-phone-notice {font-weight:500; font-size:11px; line-height:1.4em; color:#8D8DA6}
+
+.main-contacts {display:flex; justify-content:space-between; gap:0 40px}
+.main-contacts-info {min-width:calc(50% - 20px); max-width:calc(50% - 20px)}
+.main-contacts-list {border-bottom:1px solid rgba(168, 168, 191, 0.3)}
+.main-contacts-item {border-top:1px solid rgba(168, 168, 191, 0.3); padding:30px 0; display:flex; align-items:center}
+.main-contacts-item-title {min-width:180px; max-width:180px; font-weight:600; font-size:11px; line-height:1.4em; letter-spacing:0.09em; text-transform:uppercase; color:#8D8DA6}
+.main-contacts-item-text {flex-grow:1}
+.main-contacts-map {min-width:calc(50% - 20px); max-width:calc(50% - 20px); display:flex; flex-direction:column; gap:20px 0}
+.main-contacts-map-inner {flex-grow:1; border-radius:8px; position:relative; overflow:hidden}
+.main-contacts-map-btn a {display:flex; height:40px; align-items:center; justify-content:center; border:1px solid rgba(141, 141, 166, 0.3); color:#3E3E59; transition:border-color 0.2s, color 0.2s, background 0.2s; border-radius:4px; font-weight:600; font-size:11px; line-height:1.4em; letter-spacing:0.09em; text-transform:uppercase}
+@media (min-width:1100px) {
+    .main-contacts-map-btn a:hover {border-color:#FF6734; background-color:#FF6734; color:#FFFFFF}
+}
+.main-contacts-item-text-copy {display:inline-block; vertical-align:middle; margin:-2px 0 0 0; cursor:pointer}
+.main-contacts-item-text-copy svg {display:block; width:24px; height:24px; fill:rgba(0, 15, 59, 0.2); transition:fill 0.2s}
+@media (min-width:1100px) {
+    .main-contacts-item-text-copy:hover svg {fill:#FF6734}
+}

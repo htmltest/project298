@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>ПСБ Страховой брокер</title>
+
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/sitedown.css">
+
+        <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width">
+    </head>
+
+    <body>
+
+        <!-- container -->
+        <div class="container">
+            <!-- sitedown -->
+            <div class="sitedown">
+
+                <div class="sitedown-logo"><img src="images/logo.svg" alt=""></div>
+
+                <div class="sitedown-header">
+                    <div class="sitedown-header-text">
+                        <div class="sitedown-header-title">Сайт временно недоступен</div>
+                        <div class="sitedown-header-descr">Сайт временно недоступен. В&nbsp;настоящий момент ведутся технические работы, приносим вам свои извинения за&nbsp;доставленные неудобства.</div>
+                    </div>
+                    <div class="sitedown-header-hotline">
+                        <div class="sitedown-header-hotline-text">
+                            <div class="sitedown-header-hotline-title">Горячая линия</div>
+                            <div class="sitedown-header-hotline-phone">
+                                <div class="sitedown-header-hotline-phone-value"><a href="tel:+78003330803">8 800 333 08 03</a></div>
+                                <div class="sitedown-header-hotline-phone-notice">Звонок по&nbsp;РФ бесплатный</div>
+                            </div>
+                        </div>
+                        <div class="sitedown-header-hotline-img"><img src="images/sitedown-header-hotline.png" alt=""></div>
+                    </div>
+                </div>
+
+                <!-- main contacts -->
+                <div class="main-contacts">
+                    <div class="main-contacts-info">
+                        <div class="main-contacts-list">
+                            <div class="main-contacts-item">
+                                <div class="main-contacts-item-title">Адрес</div>
+                                <div class="main-contacts-item-text">109240, г.&nbsp;Москва, вн.&nbsp;тер.&nbsp;г.&nbsp;муниципальный округ Таганский, пер.&nbsp;Большой Ватин, д.&nbsp;3</div>
+                            </div>
+                            <div class="main-contacts-item">
+                                <div class="main-contacts-item-title">График работы</div>
+                                <div class="main-contacts-item-text">Подельник - четверг с 9:00 до 18:00,<br> пятница с 9:00 до 16:30</div>
+                            </div>
+                            <div class="main-contacts-item">
+                                <div class="main-contacts-item-title">Центр клиентского обслуживания</div>
+                                <div class="main-contacts-item-text"><a href="tel:+74956400280">+7 (495) 640 02 80</a></div>
+                            </div>
+                            <div class="main-contacts-item">
+                                <div class="main-contacts-item-title">Е-Майл</div>
+                                <div class="main-contacts-item-text">
+                                    <a href="mailto:info@psbinsbroker.ru">info@psbinsbroker.ru</a>
+                                    <span class="main-contacts-item-text-copy" data-clipboard-text="info@psbinsbroker.ru" data-clipboard-success="E-mail скопирован в буфер"><svg><use xlink:href="images/sprite.svg#icon-copy"></use></svg></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-contacts-map">
+                        <div class="main-contacts-map-inner" id="map"></div>
+                        <script src="https://api-maps.yandex.ru/2.1/?apikey=e57c585d-ec7d-41bf-af46-c8d197dc63c8&lang=ru_RU" type="text/javascript"></script>
+                        <script>
+                            ymaps.ready(init);
+
+                            var myMap;
+                            var coords = [55.747277, 37.645726];
+
+                            function init() {
+                                myMap = new ymaps.Map('map', {
+                                    center: coords,
+                                    zoom: 16,
+                                    controls: []
+                                });
+                                myMap.geoObjects.add(new ymaps.Placemark(coords, {}, {
+                                    iconLayout: 'default#image',
+                                    iconImageHref: 'images/map-icon.svg',
+                                    iconImageSize: [48, 54],
+                                    iconImageOffset: [-33, -54]
+                                }));
+                            }
+                        </script>
+                        <div class="main-contacts-map-btn"><a href="https://yandex.ru/maps/213/moscow/?ll=37.645726%2C55.747277&mode=routes&rtext=55.747277%2C37.645726&rtt=auto&z=15.6" target="_blank">Проложить маршрут в Яндекс.навигатор</a></div>
+                    </div>
+                </div>
+                <!-- main contacts END -->
+
+            </div>
+            <!-- sitedown END -->
+
+        </div>
+        <!-- container END -->
+        
+        <script src="js/sitedown.js"></script>
+
+    </body>
+</html>
