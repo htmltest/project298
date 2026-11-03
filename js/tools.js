@@ -3,17 +3,21 @@ $(document).ready(function() {
     $('.header-burger-link').click(function(e) {
         if ($('html').hasClass('menu-burger-open')) {
             $('html').removeClass('menu-burger-open');
+            $('body').css({'padding-right': 0});
             if ($(window).width() < 768) {
                 $('meta[name="viewport"]').attr('content', 'width=device-width');
                 $(window).scrollTop($('html').data('scrollTop'));
             }
         } else {
-            var curWidth = $(window).width();
+            let curWidth = $(window).width();
             if (curWidth < 375) {
                 curWidth = 375;
             }
-            var curScroll = $(window).scrollTop();
+            let curPadding = $('.wrapper').width();
+            const curScroll = $(window).scrollTop();
             $('html').addClass('menu-burger-open');
+            curPadding = $('.wrapper').width() - curPadding;
+            $('body').css({'padding-right': curPadding});
             if ($(window).width() < 768) {
                 $('meta[name="viewport"]').attr('content', 'width=' + curWidth);
                 $('html').data('scrollTop', curScroll);
@@ -26,6 +30,7 @@ $(document).ready(function() {
         if ($(e.target).parents().filter('header').length == 0 && !$(e.target).is('header')) {
             if ($('html').hasClass('menu-burger-open')) {
                 $('html').removeClass('menu-burger-open');
+                $('body').css({'padding-right': 0});
                 if ($(window).width() < 768) {
                     $('meta[name="viewport"]').attr('content', 'width=device-width');
                     $(window).scrollTop($('html').data('scrollTop'));
@@ -35,7 +40,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.window-link', function(e) {
-        var curLink = $(this);
+        const curLink = $(this);
         windowOpen(curLink.attr('href'));
         e.preventDefault();
     });
@@ -71,7 +76,7 @@ $(document).ready(function() {
     });
 
     $('.form-files').each(function() {
-        var curFiles = $(this);
+        const curFiles = $(this);
         if (curFiles.find('.form-files-list-item').length > 0) {
             curFiles.addClass('full');
             curFiles.find('.files-required').val('true');
@@ -79,8 +84,8 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.form-files-list-item-remove', function(e) {
-        var curLink = $(this);
-        var curFiles = curLink.parents().filter('.form-files');
+        const curLink = $(this);
+        const curFiles = curLink.parents().filter('.form-files');
         $.ajax({
             type: 'GET',
             url: curLink.attr('href'),
@@ -97,8 +102,8 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.form-files-list-item-cancel', function(e) {
-        var curLink = $(this);
-        var curFiles = curLink.parents().filter('.form-files');
+        const curLink = $(this);
+        const curFiles = curLink.parents().filter('.form-files');
         curLink.parent().remove();
         if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
             curFiles.removeClass('full');
@@ -112,14 +117,14 @@ $(document).ready(function() {
     });
 
     $(document).bind('dragover', function (e) {
-        var dropZones = $('.form-files-dropzone'),
+        const dropZones = $('.form-files-dropzone'),
             timeout = window.dropZoneTimeout;
         if (timeout) {
             clearTimeout(timeout);
         } else {
             dropZones.addClass('in');
         }
-        var hoveredDropZone = $(e.target).closest(dropZones);
+        const hoveredDropZone = $(e.target).closest(dropZones);
         dropZones.not(hoveredDropZone).removeClass('hover');
         hoveredDropZone.addClass('hover');
         window.dropZoneTimeout = setTimeout(function () {
@@ -129,8 +134,8 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.form-files-dropzone', function(e) {
-        var curLink = $(this);
-        var curFiles = $(this).parents().filter('.form-files');
+        const curLink = $(this);
+        const curFiles = $(this).parents().filter('.form-files');
         curFiles.find('.form-files-input input').click();
         e.preventDefault();
     });
@@ -140,8 +145,8 @@ $(document).ready(function() {
     });
 
     $('.main-welcome').each(function() {
-        var curSlider = $(this);
-        var swiper = new Swiper(curSlider.find('.swiper')[0], {
+        const curSlider = $(this);
+        const swiper = new Swiper(curSlider.find('.swiper')[0], {
             loop: true,
             slidesPerView: 1,
             autoplay: {
@@ -159,8 +164,8 @@ $(document).ready(function() {
     });
 
     $('.main-digits-list').each(function() {
-        var curSlider = $(this);
-        var swiper = new Swiper(curSlider.find('.swiper')[0], {
+        const curSlider = $(this);
+        const swiper = new Swiper(curSlider.find('.swiper')[0], {
             loop: true,
             autoHeight: true,
             slidesPerView: 1,
@@ -172,15 +177,11 @@ $(document).ready(function() {
     });
 
     $('.main-news').each(function() {
-        var curSlider = $(this);
-        var swiper = new Swiper(curSlider.find('.swiper')[0], {
+        const curSlider = $(this);
+        const swiper = new Swiper(curSlider.find('.swiper')[0], {
             loop: true,
             spaceBetween: 60,
             slidesPerView: 4,
-            navigation: {
-                nextEl: curSlider.find('.swiper-button-next')[0],
-                prevEl: curSlider.find('.swiper-button-prev')[0],
-            },
         });
     });
 
@@ -200,7 +201,7 @@ $(document).ready(function() {
     $('body').on('click', '.tabs-menu ul li a', function(e) {
         const curItem = $(this).parent();
         if (!curItem.hasClass('active')) {
-            var curTabs = curItem.parent().parent().parent();
+            const curTabs = curItem.parent().parent().parent();
             curTabs.find('> .tabs-menu ul li.active').removeClass('active');
             curItem.addClass('active');
             const curIndex = curTabs.find('> .tabs-menu ul li').index(curItem);
@@ -272,6 +273,28 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.partners').each(function() {
+        const countItems = $('.partners-item').length;
+        if (countItems > 10) {
+            $('.partners-more').addClass('visible');
+        }
+        if (countItems > 5) {
+            $('.partners-more').addClass('visible-mobile');
+        }
+    });
+
+    $('.partners-more a').click(function(e) {
+        $('.partners').toggleClass('open');
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.faq-item-title', function(e) {
+        const curItem = $(this).parent();
+        curItem.toggleClass('open');
+        curItem.find('.faq-item-content').slideToggle();
+        e.preventDefault();
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
@@ -283,7 +306,7 @@ $(window).on('load resize scroll', function() {
     $('body').append('<div id="body-test-height" style="position:fixed; left:0; top:0; right:0; bottom:0; z-index:-1"></div>');
     const windowHeight = $('#body-test-height').height();
     $('#body-test-height').remove();
-    
+
     if (windowScroll > 0) {
         $('header').addClass('fixed');
     } else {
@@ -352,8 +375,8 @@ function initForm(curForm) {
     curForm.find('input[autofocus]').trigger('focus');
 
     curForm.find('.form-select select').each(function() {
-        var curSelect = $(this);
-        var options = {
+        const curSelect = $(this);
+        const options = {
             minimumResultsForSearch: 10,
         };
         if (typeof(curSelect.attr('data-searchplaceholder')) != 'undefined') {
@@ -392,12 +415,12 @@ function initForm(curForm) {
     });
 
     curForm.find('.form-files').each(function() {
-        var curFiles = $(this);
-        var curInput = curFiles.find('.form-files-input input');
+        const curFiles = $(this);
+        const curInput = curFiles.find('.form-files-input input');
 
-        var uploadURL = curInput.attr('data-uploadurl');
-        var uploadFiles = curInput.attr('data-uploadfiles');
-        var removeURL = curInput.attr('data-removeurl');
+        const uploadURL = curInput.attr('data-uploadurl');
+        const uploadFiles = curInput.attr('data-uploadfiles');
+        const removeURL = curInput.attr('data-removeurl');
         curInput.fileupload({
             url: uploadURL,
             dataType: 'json',
@@ -444,10 +467,10 @@ function initForm(curForm) {
             $('body').append('<script src="https://captcha-api.yandex.ru/captcha.js?render=onload&onload=smartCaptchaLoad" defer id="smartCaptchaScript"></script>');
         } else {
             if (window.smartCaptcha) {
-                var curID = window.smartCaptcha.render(this, {
+                const curID = window.smartCaptcha.render(this, {
                     sitekey: smartCaptchaKey,
                     callback: smartCaptchaCallback,
-                    invisible: true,
+                    invisible: false,
                     hideShield: true,
                 });
                 $(this).attr('data-smartid', curID);
@@ -458,13 +481,13 @@ function initForm(curForm) {
     curForm.validate({
         ignore: '',
         submitHandler: function(form) {
-            var curForm = $(form);
+            const curForm = $(form);
 
-            var smartCaptchaWaiting = false;
+            let smartCaptchaWaiting = false;
             curForm.find('.form-captcha').each(function() {
                 if (curForm.attr('form-smartcaptchawaiting') != 'true') {
-                    var curBlock = $(this);
-                    var curInput = curBlock.find('input[name="smart-token"]');
+                    const curBlock = $(this);
+                    const curInput = curBlock.find('input[name="smart-token"]');
                     curInput.removeAttr('value');
                     smartCaptchaWaiting = true;
                     $('form[form-smartcaptchawaiting]').removeAttr('form-smartcaptchawaiting');
@@ -474,7 +497,7 @@ function initForm(curForm) {
                         alert('Сервис временно недоступен');
                         return;
                     }
-                    var curID = $(this).attr('data-smartid');
+                    const curID = $(this).attr('data-smartid');
                     window.smartCaptcha.execute(curID);
                 } else {
                     curForm.removeAttr('form-smartcaptchawaiting');
@@ -493,17 +516,17 @@ function initForm(curForm) {
     });
 }
 
-var smartCaptchaKey = 'uahGSHTKJqjaJ0ezlhjrbOYH4OxS6zzL9CZ47OgY';
+const smartCaptchaKey = 'uahGSHTKJqjaJ0ezlhjrbOYH4OxS6zzL9CZ47OgY';
 
 function smartCaptchaLoad() {
     $('.form-captcha').each(function() {
         if (!window.smartCaptcha) {
             return;
         }
-        var curID = window.smartCaptcha.render(this, {
+        const curID = window.smartCaptcha.render(this, {
             sitekey: smartCaptchaKey,
             callback: smartCaptchaCallback,
-            invisible: true,
+            invisible: false,
             hideShield: true,
         });
         $(this).attr('data-smartid', curID);
@@ -517,8 +540,8 @@ function smartCaptchaCallback(token) {
 
 function windowOpen(linkWindow, dataWindow) {
     if ($('.window').length == 0) {
-        var curPadding = $('.wrapper').width();
-        var curScroll = $(window).scrollTop();
+        let curPadding = $('.wrapper').width();
+        const curScroll = $(window).scrollTop();
         $('html').addClass('window-open');
         curPadding = $('.wrapper').width() - curPadding;
         $('body').css({'padding-right': curPadding});
@@ -558,7 +581,7 @@ function windowOpen(linkWindow, dataWindow) {
 
 function windowClose() {
     if ($('.window').length > 0) {
-        var isEmptyForm = true;
+        let isEmptyForm = true;
         $('.window:last .form-input input, .window:last .form-input textarea, .window:last .form-select select').each(function() {
             if ($(this).val() != '') {
                 isEmptyForm = false;
