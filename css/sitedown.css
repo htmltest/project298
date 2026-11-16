@@ -18,9 +18,38 @@ iframe {border:none; max-width:100%}
 
 .container {margin:0 auto; max-width:1200px; width:100%}
 
+@media (max-width:1680px) {
+    .container {max-width:1060px}
+}
+
+@media (max-width:1099px) {
+    .container {max-width:none; padding:0 34px}
+}
+
+@media (max-width:767px) {
+    .container {max-width:none; padding:0 15px}
+}
+
 .sitedown {display:flex; flex-direction:column; padding:60px 0 77px 0; gap:100px 0}
 
+@media (max-width:1099px) {
+    .sitedown {padding:60px 0; gap:60px 0}
+}
+
+@media (max-width:767px) {
+    .sitedown {padding:30px 0 60px 0}
+}
+
 .sitedown-logo img {display:block; width:392px}
+
+@media (max-width:1099px) {
+    .sitedown-logo {margin:0 0 40px 0}
+}
+
+@media (max-width:767px) {
+    .sitedown-logo {margin:0}
+    .sitedown-logo img {width:196px}
+}
 
 .sitedown-header {display:flex; justify-content:space-between; gap:0 40px}
 .sitedown-header-text {min-width:calc(50% - 20px); max-width:calc(50% - 20px); display:flex; flex-direction:column; justify-content:space-between; gap:30px 0}
@@ -38,6 +67,21 @@ iframe {border:none; max-width:100%}
 }
 .sitedown-header-hotline-phone-notice {font-weight:500; font-size:11px; line-height:1.4em; color:#8D8DA6}
 
+@media (max-width:1099px) {
+    .sitedown-header {flex-direction:column; gap:30px 0}
+    .sitedown-header-text {min-width:0; max-width:none; gap:20px 0}
+    .sitedown-header-title {font-size:36px; line-height:1.2em}
+    .sitedown-header-hotline {padding:16px 20px; min-width:0; max-width:none}
+    .sitedown-header-hotline-img {min-width:140px; max-width:140px}
+}
+
+@media (max-width:767px) {
+    .sitedown-header-title {font-size:24px; line-height:1.2em}
+    .sitedown-header-hotline-text {gap:10px 0}
+    .sitedown-header-hotline-phone-value {font-size:24px; line-height:1.2em}
+    .sitedown-header-hotline-img {min-width:75px; max-width:75px}
+}
+
 .main-contacts {display:flex; justify-content:space-between; gap:0 40px}
 .main-contacts-info {min-width:calc(50% - 20px); max-width:calc(50% - 20px)}
 .main-contacts-list {border-bottom:1px solid rgba(168, 168, 191, 0.3)}
@@ -54,4 +98,18 @@ iframe {border:none; max-width:100%}
 .main-contacts-item-text-copy svg {display:block; width:24px; height:24px; fill:rgba(0, 15, 59, 0.2); transition:fill 0.2s}
 @media (min-width:1100px) {
     .main-contacts-item-text-copy:hover svg {fill:#FF6734}
+}
+
+@media (max-width:1099px) {
+    .main-contacts {flex-direction:column; gap:40px 0}
+    .main-contacts-info {min-width:0; max-width:none}
+    .main-contacts-item {padding:20px 0}
+    .main-contacts-map {min-width:0; max-width:none}
+    .main-contacts-map-inner {height:330px}
+}
+
+@media (max-width:767px) {
+    .main-contacts-item {padding:12px 0; flex-direction:column; gap:5px 0; align-items:stretch}
+    .main-contacts-item-title {min-width:0; max-width:none}
+    .main-contacts-map-inner {height:273px}
 }

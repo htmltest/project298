@@ -163,6 +163,14 @@ $(document).ready(function() {
         });
     });
 
+    $('.main-directions-wrapper').each(function() {
+        const curSlider = $(this);
+        const swiper = new Swiper(curSlider.find('.swiper')[0], {
+            slidesPerView: 'auto',
+            freeMode: true,
+        });
+    });
+
     $('.main-digits-list').each(function() {
         const curSlider = $(this);
         const swiper = new Swiper(curSlider.find('.swiper')[0], {
@@ -179,9 +187,17 @@ $(document).ready(function() {
     $('.main-news').each(function() {
         const curSlider = $(this);
         const swiper = new Swiper(curSlider.find('.swiper')[0], {
-            loop: true,
-            spaceBetween: 60,
-            slidesPerView: 4,
+            slidesPerView: 1,
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 60,
+                },
+                1100: {
+                    slidesPerView: 4,
+                    spaceBetween: 60,
+                }
+            },
         });
     });
 

@@ -79,6 +79,7 @@
                                     zoom: 16,
                                     controls: []
                                 });
+                                myMap.behaviors.disable('scrollZoom');
                                 myMap.geoObjects.add(new ymaps.Placemark(coords, {}, {
                                     iconLayout: 'default#image',
                                     iconImageHref: 'images/map-icon.svg',
