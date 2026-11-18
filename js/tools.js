@@ -203,36 +203,36 @@ $(document).ready(function() {
 
     $('.tabs').each(function() {
         const curTabs = $(this);
-        let menuHTML =  '<ul>';
+        let menuHTML =  '<div class="swiper"><div class="swiper-wrapper"><div class="swiper-slide"><ul>';
         curTabs.find('> .tabs-container > .tabs-content').each(function() {
             menuHTML +=     '<li><a href="#">' + $(this).attr('data-title') + '</a></li>';
         });
-        menuHTML +=     '</ul>';
+        menuHTML +=     '</ul></div></div></div>';
         curTabs.find('> .tabs-menu').html(menuHTML);
         curTabs.find('> .tabs-menu li').eq(0).addClass('active');
         curTabs.find('> .tabs-container > .tabs-content').eq(0).addClass('active');
         curTabs.addClass('with-right');
+
+        curTabs.find('> .tabs-menu').each(function() {
+            const curSlider = $(this);
+
+            new Swiper(curSlider.find('.swiper')[0], {
+                slidesPerView: 'auto',
+                freeMode: true,
+            });
+        });
     });
 
     $('body').on('click', '.tabs-menu ul li a', function(e) {
         const curItem = $(this).parent();
         if (!curItem.hasClass('active')) {
-            const curTabs = curItem.parent().parent().parent();
+            const curTabs = curItem.closest('.tabs');
             curTabs.find('> .tabs-menu ul li.active').removeClass('active');
             curItem.addClass('active');
             const curIndex = curTabs.find('> .tabs-menu ul li').index(curItem);
             curTabs.find('> .tabs-container > .tabs-content.active').removeClass('active');
             curTabs.find('> .tabs-container > .tabs-content').eq(curIndex).addClass('active');
-            let curLeft = 0;
-            for (let i = 0; i < curIndex; i++) {
-                curLeft += curTabs.find('> .tabs-menu ul li').eq(i).outerWidth(true);
-            }
-            const curWidth = curTabs.find('> .tabs-menu ul li').eq(curIndex).width();
-            const curMenuWidth = curTabs.find('> .tabs-menu ul').outerWidth(true);
-            const curMenuWrapWidth = curTabs.find('> .tabs-menu').outerWidth();
-            if (curMenuWidth > curMenuWrapWidth) {
-                curTabs.find('> .tabs-menu').animate({'scrollLeft': (curLeft + 17 - curMenuWrapWidth / 2  + curWidth / 2) + 'px'});
-            }
+            curTabs.find('> .tabs-menu .swiper')[0].swiper.slideTo(curIndex - 1);
         }
         e.preventDefault();
     });

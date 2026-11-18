@@ -272,7 +272,8 @@ p {margin:12px 0; padding:0}
 .form-files-list-item-size {margin:2px 0 0 0; font-size:11px; line-height:1.4em; font-weight:500; text-align:left; color:var(--color-description); letter-spacing:0.02em}
 .form-files-list-item.error .form-files-list-item-size {color:var(--color-error)}
 
-.tabs-menu {display:flex}
+.tabs-menu {position:relative}
+.tabs-menu .swiper-slide {width:auto}
 .tabs-menu ul {display:flex; margin:0; padding:0; list-style:none; background:var(--color-grey); border-radius:6px; padding:2px; white-space:nowrap}
 .tabs-menu ul li {margin:0 0 0 2px; padding:0}
 .tabs-menu ul li:first-child {margin:0}
@@ -286,10 +287,6 @@ p {margin:12px 0; padding:0}
 @media (max-width:1099px) {
     .tabs {position:relative}
     .tabs-menu {white-space:nowrap; position:relative; overflow:auto; margin:-40px -15px}
-    .tabs.with-left::before {content:""; position:absolute; z-index:2; left:-15px; top:40px; width:80px; height:38px; background:linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%); pointer-events:none}
-    .tabs.with-right::after {content:""; position:absolute; z-index:2; right:-15px; top:40px; width:80px; height:38px; background:linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%); pointer-events:none}
-    .tabs-menu::-webkit-scrollbar-thumb {background:transparent; border-radius:0}
-    .tabs-menu::-webkit-scrollbar {width:0; height:0; background:transparent}
     .tabs-menu ul {margin:40px 15px}
     .tabs-menu ul li a {height:39px; font-size:13px; line-height:1.4em; letter-spacing:0}
 }
@@ -838,6 +835,7 @@ header .burger-menu .container {display:flex; flex-grow:1; flex-direction:column
 }
 
 @media (max-width:767px) {
+    .news-others h3 {font-size:24px; line-height:1.5em}
     .news-others .news {flex-direction:column; gap:10px 0}
     .news-others .news a:nth-child(n + 3) {display:flex}
 }
@@ -927,6 +925,7 @@ header .burger-menu .container {display:flex; flex-grow:1; flex-direction:column
     .contacts-main {gap:20px 0}
     .contacts-main-title {font-size:24px; line-height:1.5em}
     .contacts-item {padding:12px 0; flex-direction:column; gap:5px 0; align-items:stretch}
+    .contacts-item-title {min-width:0; max-width:none}
 }
 
 .contacts-map {margin:60px 0; height:500px}
